@@ -13,6 +13,7 @@ class MoreScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorConstants.mainBlack,
       appBar: AppBar(
+         leadingWidth: 100,
         backgroundColor: ColorConstants.mainBlack,
         leading: Row(
           mainAxisSize: MainAxisSize.min,
@@ -66,21 +67,30 @@ class MoreScreen extends StatelessWidget {
                 itemCount: DummyDb.statusView.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
+                  childAspectRatio: 1/1.7,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (context, index) {
                   return ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      height: 300,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(DummyDb.statusView[index]),
+                    borderRadius: BorderRadius.circular(4),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 300,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(DummyDb.statusView[index]),
+                            ),
+                          ),
                         ),
-                      ),
+                        // Positioned(
+                        //   bottom: 0,
+                        //   left: 0,
+                        //   child: Text("data"))
+                      ],
                     ),
                   );
                 },
